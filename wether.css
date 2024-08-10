@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s, background-image 0.3s;
+    background-size: cover;
+    background-position: center;
+}
+
+.light-theme {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.dark-theme {
+    background-color: #121212;
+    color: white;
+}
+
+.dark-theme .container,
+.dark-theme #weather {
+    background-color: #1e1e1e; /* Dark background for container and weather info */
+}
+
+.dark-theme p {
+    color: white; /* Change text color to white for the <p> element in dark theme */
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+    width: 350px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#location-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#manual-input {
+    display: none;
+    margin-top: 20px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse; /* Move icon to the right */
+}
+
+#city {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 50px); /* Adjust width to accommodate icon */
+    margin-left: 10px; /* Adjust margin for spacing */
+    font-size: 16px;
+}
+
+#weather-icon {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    width: 40px; /* Fixed width to match icon size */
+    height: 40px; /* Fixed height to match icon size */
+}
+
+#weather-icon svg {
+    fill: #007bff; /* Default color */
+    transition: fill 0.3s;
+}
+
+#weather-icon:hover svg {
+    fill: #0056b3;
+}
+
+#allow-location,
+#deny-location {
+    padding: 12px 20px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+}
+
+#allow-location:hover,
+#deny-location:hover {
+    background: #0056b3;
+}
+
+#theme-toggle {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 24px;
+    width: 40px; /* Adjust width for the icon */
+    height: 40px; /* Adjust height for the icon */
+    margin-top: 10px;
+}
+
+#theme-toggle svg {
+    fill: #007bff; /* Default color */
+    transition: fill 0.3s;
+}
+
+#theme-toggle:hover svg {
+    fill: #0056b3;
+}
+
+#weather {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #e9ecef;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 1s ease-out, opacity 1s ease-out;
+    opacity: 0;
+}
+
+#weather.show {
+    max-height: 500px; /* Adjust as needed */
+    opacity: 1;
+}
+
+.weather-info img {
+    margin-top: 10px;
+    max-width: 100px;
+}
