@@ -1,5 +1,5 @@
-window.onload = function() {
-    // Function to request location
+window.onload = function() 
+{
     function requestLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(success, error);
@@ -8,16 +8,15 @@ window.onload = function() {
         }
     }
 
-    // Success callback for location access
     function success(position) {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
-        const Key = 'd1ffa95da32b4b4a1c011d9ce976efc3';
+        const Key = ''; // ENTER YOUR KEY HERE
 
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Key}&units=metric`)
             .then(response => response.json())
             .then(data => {
-                document.getElementById("city").value = data.name; // Fill the city input with detected city
+                document.getElementById("city").value = data.name;
                 displayWeather(data);
                 document.getElementById("allow-location").style.display = 'none';
                 document.getElementById("manual-input").style.display = 'block';
@@ -25,25 +24,21 @@ window.onload = function() {
             .catch(error => console.error('Error:', error));
     }
 
-    // Error callback for location access
     function error() {
         console.error('Unable to retrieve your location');
         document.getElementById("allow-location").style.display = 'none';
         document.getElementById("manual-input").style.display = 'block';
     }
 
-    // Event handler for "Allow Location" button
     document.getElementById("allow-location").onclick = function() {
         requestLocation();
     };
 
-    // Event handler for "Enter Location Manually" button
     document.getElementById("deny-location").onclick = function() {
         document.getElementById("location-prompt").style.display = 'none';
         document.getElementById("manual-input").style.display = 'block';
     };
 
-    // Event handler for "Get Weather" button
     document.getElementById("weather-icon").onclick = function() {
         let city = document.getElementById("city").value;
         const Key = 'd1ffa95da32b4b4a1c011d9ce976efc3';
@@ -54,7 +49,6 @@ window.onload = function() {
             .catch(error => console.error('Error:', error));
     };
 
-    // Event handler for "Change Theme" button
     document.getElementById("theme-toggle").onclick = function() {
         let body = document.body;
         let themeToggleBtn = document.getElementById("theme-toggle");
@@ -78,14 +72,12 @@ window.onload = function() {
         }
     };
 
-    // Function to display weather data
     function displayWeather(data) {
         let city = data.name;
         let weather = data.weather[0].main;
         let temp = data.main.temp;
         let speed = data.wind.speed;
 
-        // Set background image based on weather
         setBackgroundImage(weather);
 
         let imgPath = '';
@@ -112,11 +104,9 @@ window.onload = function() {
             Div.appendChild(img);
         }
 
-        // Show the weather info with a drop-down effect
         Div.classList.add('show');
     }
 
-    // Function to set background image based on weather condition
     function setBackgroundImage(weather) {
         let body = document.body;
         if (weather === "Clouds") {
